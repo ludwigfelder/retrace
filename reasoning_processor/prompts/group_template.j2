@@ -1,0 +1,78 @@
+{{ system_prompt }}
+
+## Input Data
+
+{{ input_data.reasoning_content | tojson }}
+
+## Output Format
+
+## Output Format Specification (Provided separately by the user)
+Your output *must be a single, valid JSON object* with this structure:
+```json
+{
+  "reasoning_analysis": {
+    "problem_definition_and_scoping": {
+      "main_phase_summary": "A very short, descriptive summary of the 'Problem Definition & Scoping' phase (e.g., Clarifying the user's goal, defining inputs, and what needs to be calculated.)",
+      "subphases": [
+        {
+          "id": "subphase_1", // Unique sequential ID
+          "subcategory": "Starting_to_Think", // Single subcategory label from the taxonomy
+          "summary": "A very short summary specific to this subphase (e.g., Acknowledging the prompt.)",
+          "step_indices": [0]
+        },
+        {
+          "id": "subphase_2",
+          "subcategory": "Reading_the_Question",
+          "summary": "Describing the identification of key inputs.",
+          "step_indices": [1]
+        }
+        // ... more subphases for this main phase if applicable
+      ]
+    },
+    "initial_solution_and_exploration": {
+      "main_phase_summary": "A very short, descriptive summary of the 'Initial Solution & Exploration' phase (e.g., Developing and executing an initial solution plan to arrive at a first answer.)",
+      "subphases": [
+        {
+          "id": "subphase_X", // Continue sequential ID
+          "subcategory": "Making_a_Plan",
+          "summary": "Outlining the initial strategy.",
+          "step_indices": [2, 3]
+        }
+        // ... more subphases for this main phase if applicable
+      ]
+    },
+    "iterative_refinement_and_verification": {
+      "main_phase_summary": "A very short, descriptive summary of the 'Iterative Refinement & Verification' phase (e.g., Reviewing initial findings, verifying steps, exploring alternatives, or 'No iterative refinement occurred.').",
+      "subphases": [
+        // This list can be empty if no such actions are present.
+        // Example of a subphase within this main phase:
+        // {
+        //   "id": "subphase_Y",
+        //   "subcategory": "Try_Alternative_(Rebloom)",
+        //   "summary": "Exploring a different calculation method.",
+        //   "step_indices": [4, 5]
+        // },
+        // {
+        //   "id": "subphase_Z",
+        //   "subcategory": "Reexamines_(Rumination)",
+        //   "reference_subphase_id": "subphase_Y", // Optional: ID of the 'Try_Alternative_(Rebloom)' being ruminated on, if applicable
+        //   "summary": "Re-checking the alternative calculation method.",
+        //   "step_indices": [6]
+        // }
+      ]
+    },
+    "final_decision": {
+      "main_phase_summary": "A very short, descriptive summary of the 'Final Decision' phase (e.g., Consolidating findings, confirming the solution, and preparing the output.)",
+      "subphases": [
+        {
+          "id": "subphase_N", // Continue sequential ID
+          "subcategory": "Settling_on_Solution",
+          "summary": "Deciding on the definitive answer.",
+          "step_indices": [7]
+        }
+        // ... more subphases for this main phase if applicable
+      ]
+    }
+  }
+}
+```

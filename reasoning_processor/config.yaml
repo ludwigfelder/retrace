@@ -1,0 +1,16 @@
+# Configuration for reasoning processor
+
+# Model configuration
+model: "gemini-2.5-pro"
+stream: false
+
+# LLM generation parameters used by grouping step
+# Note: only these keys are read by the code
+template_variables:
+  temperature: 0.0
+  top_p: 0.95
+  top_k: 40
+  max_output_tokens: 8192
+
+# Response format expected from the LLM
+response_mime_type: "application/json"

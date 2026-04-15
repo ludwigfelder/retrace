@@ -1,0 +1,33 @@
+@import 'tailwindcss';
+
+.svelte-flow__edges {
+	z-index: 1;
+}
+
+.svelte-flow {
+	/* --xy-edge-stroke-default: white !important; */
+  }
+
+/* Add these custom styles for code blocks */
+pre[class*="language-"] {
+	@apply rounded-md my-4 overflow-x-auto;
+  }
+  
+  code[class*="language-"] {
+	@apply font-mono text-sm;
+  }
+  
+  /* Or if you want more specific styling */
+  .prose pre {
+	@apply bg-gray-800 text-white;
+  }
+  
+  .prose code {
+	@apply text-sm;
+  }
+
+.svelte-flow__edge-path {
+  stroke-width: 4px !important;
+  stroke-linecap: round;
+  /* z-index: -999 !important !important; */
+}
