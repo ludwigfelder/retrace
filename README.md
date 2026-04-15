@@ -1,4 +1,4 @@
-# retrace_submission
+# ReTrace
 
 Supplementary materials for a EuroVIS submission. Includes:
 - **reasoning_generator**: calls DeepSeek R1 and saves raw reasoning traces.
